@@ -1,24 +1,13 @@
-function Diction(languageInput) {    
+function Diction(arr) {    
     this.ball = 0;
     this.errors = 0;
-    this.languageInput = languageInput;
-    this.languageCheck = function (languageInput) {
-        let language = ["enRu", "ruEn"];
-        if (languageInput == language[0]) {
-            alert("from english to  russian");
-            this.enRu();
-          } else {
-            alert("from russian to english");
-            this.ruEn();
-          }
-        },
-    this.enRu = function(){
+    this.translation = function(arr){
         let translate;
-        for (word in this.words) {
+        for (word in arr) {
           alert("Word: " + word);
           translate = prompt("Input translation or -'!'");
           if (translate == "!") break;
-          if (translate == this.words[word]) {
+          if (translate == arr[word]) {
             alert("Right!");
             this.ball++;
           } else {
@@ -28,47 +17,27 @@ function Diction(languageInput) {
         }
         this.yourscore();
     },
-    this.ruEn = function(){
-        let translate;
-        for (word1 in this.words1) {
-          alert("Word: " + word1);
-          translate = prompt("Input translation or -'!'");
-          if (translate == "!") break;
-          if (translate == this.words1[word1]) {
-            alert("Right!");
-    this.ball++;
-          } else {
-            alert("Wrong!");
-   this.errors++;
-          }
-        }
-        this.yourscore();
-      },
+  
 this.yourscore= function () {
         document.write(`Your score: ${this.ball} <br>`);
         document.write(`Your mistakes: ${this.errors}`);
       },
-this.allwords = function () {
-    for (word in this.dictianary()) {
-      document.write(`${key} : ${arr[key]}`);
+this.allwords = function (arr) {
+    for (word in arr) {
+      document.write(`${word} : ${arr[word]} <br>`);
     }
-  },
-  this.toString = function () {
-    return document.write(`  xc <br>`);
-  
-},
-this.words =  {
+  }
+
+};
+let words =  {
   apple: "яблоко",
   house: "дом",
   mouse: "мышь",
-},
-this.words1 =  {
+};
+let words1 =  {
   яблоко: "apple",
   дом: "house",
   мышь: "mouse",
-}
 };
-
-  
-    let first = new Diction(prompt("input language"));
-    first.languageCheck();
+    let first = new Diction(words);
+    let second = new Diction(words1)
